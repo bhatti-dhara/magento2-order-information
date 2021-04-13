@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BhattiDhara
+ * Copyright (C) 2021 BhattiDhara
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://opensource.org/licenses/gpl-3.0.html
+ *
+ * @category BhattiDhara
+ * @package Mage2_OrderInfo
+ * @copyright Copyright (c) 2021 BhattiDhara
+ * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author BhattiDhara
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="mage2orderinfo" type="text" translate="label" showInDefault="1" showInStore="1" showInWebsite="1"
+                 sortOrder="30">
+
+            <label>Order Information</label>
+            <tab>mage2</tab>
+            <resource>Mage2_OrderInfo::orderinfo_config</resource>
+
+            <group id="general" type="text" translate="label" showInWebsite="1" showInStore="1" showInDefault="1"
+                   sortOrder="10">
+                <label>General</label>
+
+                <field id="enable" type="select" translate="label" showInDefault="1" showInStore="1" showInWebsite="1"
+                       sortOrder="10" canRestore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+            </group>
+
+        </section>
+
+    </system>
+</config>

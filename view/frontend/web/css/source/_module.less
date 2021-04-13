@@ -1,0 +1,100 @@
+/**
+ * BhattiDhara
+ * Copyright (C) 2021 BhattiDhara
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://opensource.org/licenses/gpl-3.0.html
+ *
+ * @category BhattiDhara
+ * @package Mage2_OrderInfo
+ * @copyright Copyright (c) 2021 BhattiDhara
+ * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author BhattiDhara
+ */
+.checkout-onepage-success {
+    .page-main {
+        position: relative;
+
+        .page-title-wrapper .page-title {
+            display: block;
+        }
+
+        .block {
+            margin-bottom: 0px;
+        }
+    }
+
+    h1.page-title {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    .action.print {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .order-info-container {
+        .checkout-success {
+            text-align: center;
+
+            p.order-number {
+                font-size: 16px;
+                margin-bottom: 20px;
+
+                span {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .block-order-details-view {
+            margin-top: 10px;
+
+            .block-title {
+                font-size: 16px;
+                padding: 10px 0px;
+            }
+
+            .block-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .order-items {
+            tbody {
+                .items-qty {
+                    li.item {
+                        list-style-type: none;
+                    }
+                }
+            }
+
+            tfoot {
+                .amount {
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+    #registration {
+        text-align: center;
+    }
+}

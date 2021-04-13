@@ -1,0 +1,82 @@
+
+<?php
+/**
+ * BhattiDhara
+ * Copyright (C) 2021 BhattiDhara
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://opensource.org/licenses/gpl-3.0.html
+ *
+ * @category BhattiDhara
+ * @package Mage2_OrderInfo
+ * @copyright Copyright (c) 2021 BhattiDhara
+ * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author BhattiDhara
+ */
+?>
+<?php
+/** @var $block \Magento\Checkout\Block\Onepage\Success */
+
+/** @var  $orderInfoViewModel \Mage2\OrderInfo\ViewModel\OrderInfo  */
+$orderInfoViewModel = $block->getOrderinfoViewModel();
+
+if ($orderInfoViewModel->isModuleEnable()) {
+    ?>
+    <div class="checkout-success">
+        <?php if ($block->getOrderId()): ?>
+            <?php if ($block->getCanViewOrder()): ?>
+                <p class="order-number">
+                    <?= $block->escapeHtml(__('Order Number: %1.', sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeUrl($block->getViewOrderUrl()), $block->getOrderId())), ['a', 'strong']) ?>
+                </p>
+            <?php else: ?>
+                <p class="order-number">
+                    <?= $block->escapeHtml(__('Order Number: <span>%1</span>.', $block->getOrderId()), ['span']) ?>
+                </p>
+            <?php endif; ?>
+        <?php endif; ?>
+        <a class="action primary continue" href="<?= $block->escapeUrl($block->getContinueUrl()) ?>">
+            <span><?= $block->escapeHtml(__('Continue Shopping')) ?></span>
+        </a>
+
+    </div>
+    <?php
+} else {
+    ?>
+    <div class="checkout-success">
+        <?php if ($block->getOrderId()): ?>
+            <?php if ($block->getCanViewOrder()): ?>
+                <p>
+                    <?= $block->escapeHtml(__('Your order number is: %1.', sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeUrl($block->getViewOrderUrl()), $block->getOrderId())), ['a', 'strong']) ?>
+                </p>
+            <?php else: ?>
+                <p>
+                    <?= $block->escapeHtml(__('Your order # is: <span>%1</span>.', $block->getOrderId()), ['span']) ?>
+                </p>
+            <?php endif; ?>
+            <p>
+                <?= $block->escapeHtml(__('We\'ll email you an order confirmation with details and tracking info.')) ?>
+            </p>
+        <?php endif; ?>
+
+        <?= $block->getAdditionalInfoHtml() ?>
+
+        <a class="action primary continue" href="<?= $block->escapeUrl($block->getContinueUrl()) ?>">
+            <span><?= $block->escapeHtml(__('Continue Shopping')) ?></span>
+        </a>
+
+    </div><?php
+}
+?>
+

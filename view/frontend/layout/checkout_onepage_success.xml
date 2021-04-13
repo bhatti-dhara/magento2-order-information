@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BhattiDhara
+ * Copyright (C) 2021 BhattiDhara
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://opensource.org/licenses/gpl-3.0.html
+ *
+ * @category BhattiDhara
+ * @package Mage2_OrderInfo
+ * @copyright Copyright (c) 2021 BhattiDhara
+ * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author BhattiDhara
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Thank You Page</title>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <container name="orderinfo.container" as="orderinfoContainer" htmlTag="div" htmlClass="order-info-container"
+                       before="-">
+                <referenceBlock class="Magento\Checkout\Block\Onepage\Success" name="checkout.success"
+                                template="Mage2_OrderInfo::order/success.phtml">
+                    <arguments>
+                        <argument name="orderinfo_view_model" xsi:type="object">Mage2\OrderInfo\ViewModel\OrderInfo
+                        </argument>
+                    </arguments>
+                </referenceBlock>
+                <block class="Mage2\OrderInfo\Block\Onepage\Success\Order\Info" as="info" name="sales.order.info"
+                       template="Mage2_OrderInfo::order/info.phtml" ifconfig="mage2orderinfo/general/enable"/>
+                <block class="Magento\Sales\Block\Order\Items" name="order_items" after="sales.order.info"
+                       template="Magento_Sales::order/items.phtml" ifconfig="mage2orderinfo/general/enable">
+                    <block class="Magento\Framework\View\Element\RendererList" name="sales.order.items.renderers"
+                           as="renderer.list">
+                        <block class="Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer"
+                               name="sales.order.items.renderers.default" as="default"
+                               template="Magento_Sales::order/items/renderer/default.phtml"/>
+                        <block class="Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer" name="item_unit_price"
+                               template="Magento_Sales::items/price/unit.phtml"/>
+                        <block class="Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer" name="item_row_total"
+                               template="Magento_Sales::items/price/row.phtml"/>
+                        <block class="Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer"
+                               name="item_row_total_after_discount"
+                               template="Magento_Sales::items/price/total_after_discount.phtml"/>
+                    </block>
+                    <block class="Magento\Sales\Block\Order\Totals" name="order_totals"
+                           template="Magento_Sales::order/totals.phtml">
+                        <arguments>
+                            <argument name="label_properties" xsi:type="string">colspan="4" class="mark"</argument>
+                            <argument name="value_properties" xsi:type="string">class="amount"</argument>
+                        </arguments>
+                        <block class="Magento\Tax\Block\Sales\Order\Tax" name="tax"
+                               template="Magento_Tax::order/tax.phtml"/>
+                    </block>
+                </block>
+            </container>
+
+        </referenceContainer>
+        <move element="checkout.success" destination="orderinfo.container" before="-"/>
+    </body>
+</page>
